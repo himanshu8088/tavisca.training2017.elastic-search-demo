@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POISearchEngine.Lib", "POISearchEngine.Lib\POISearchEngine.Lib.csproj", "{51765550-79BC-4BC1-85D0-9BBEFA73AE41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{99DF95D9-08FD-4ED4-AB61-AC8936BFFC2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POISearchEngine.Lib.Tests", "POISearchEngine.Lib.Tests\POISearchEngine.Lib.Tests.csproj", "{8B9ACD2B-FE9C-483C-BC39-094A1960BDD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51765550-79BC-4BC1-85D0-9BBEFA73AE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51765550-79BC-4BC1-85D0-9BBEFA73AE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51765550-79BC-4BC1-85D0-9BBEFA73AE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51765550-79BC-4BC1-85D0-9BBEFA73AE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B9ACD2B-FE9C-483C-BC39-094A1960BDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B9ACD2B-FE9C-483C-BC39-094A1960BDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B9ACD2B-FE9C-483C-BC39-094A1960BDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B9ACD2B-FE9C-483C-BC39-094A1960BDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B9ACD2B-FE9C-483C-BC39-094A1960BDD0} = {99DF95D9-08FD-4ED4-AB61-AC8936BFFC2C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EF52EC5-B172-4771-B8D5-CDA95FA8DCAE}
+	EndGlobalSection
+EndGlobal

@@ -8,17 +8,32 @@ using Nest;
 namespace POISearchEngine.Lib
 {
     public class ESIndexer
-    {
-        private IIndexResponse _indexResponse;
-        
-        public void CreateIndex(ElasticClient client,POI poi)
+    {        
+        private ElasticClient _client;
+        private string _index;
+        private string _type;
+        public ESIndexer(ElasticClient client, string index, string type)
         {
-            _indexResponse = client.Index(poi);
+            _client = client;
+            _index = index;
+            _type = type;
         }
 
-        public IIndexResponse GetResponse()
+        public IIndexResponse CreateIndex(POI poi)
         {            
-            return _indexResponse;
+            var response = _client.Index(poi, i => i
+                          .Index(_index)
+                          .Type(_type)
+                          .Id(poi.Id)
+                          );
+            return response;
         }
+
+        public IDeleteIndexResponse DeleteIndex(ElasticClient client, string index)
+        {
+            var response = client.DeleteIndex(index);
+            return response;
+        }
+        
     }
 }

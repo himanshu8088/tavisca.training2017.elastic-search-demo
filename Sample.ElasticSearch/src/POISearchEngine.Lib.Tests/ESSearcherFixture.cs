@@ -12,20 +12,21 @@ namespace POISearchEngine.Lib.Tests
     {
         [Fact]
         public void Search_Should_Return_Valid_Result()
-        {            
-            ESSearcher searcher = new ESSearcher();
+        {
             ESConnection conn = new ESConnection();
-            var client = conn.GetClient(new Uri("http://172.16.14.115:9200/"), "poi_index");
-            ESIndexer indexer = new ESIndexer();
-            indexer.CreateIndex(client,
-                new POI()
-                {
-                    Name = "Sambar",
-                    Type = "Restaurant",
-                    Description = "A Good Place"
-                });
-            var response = indexer.GetResponse();
-            var result=searcher.Search(client,"Sambar");
+            string index = "poi_ind";
+            string type = "poi";
+            var client = conn.GetClient(new Uri("http://172.16.14.115:9200/"), index);
+            ESIndexer indexer = new ESIndexer(client, index, type);
+            var response = indexer.CreateIndex(new POI()
+            {
+                Name = "Sambar",
+                Type = "Restaurant",
+                Description = "A Good Place"
+            });
+
+            ESSearcher searcher=new ESSearcher(client, index, type);
+            var result=searcher.Search("Sambar");
             Assert.NotNull(result);
         }
     }

@@ -9,12 +9,20 @@ namespace POISearchEngine.Lib
 {
     public class ESSearcher
     {
-        public ISearchResponse<POI> Search(ElasticClient client, string searchText)
+        private ElasticClient _client;
+        private string _index;
+        private string _type;
+        public ESSearcher(ElasticClient client, string index, string type)
         {
-            var searchResponse = client.Search<POI>(s => s
-                                .AllTypes()
-                                .From(0)
-                                .Size(10)
+            _client = client;
+            _index = index;
+            _type = type;
+        }
+        public ISearchResponse<POI> Search(string searchText)
+        {
+            var searchResponse = _client.Search<POI>(s => s
+                                .Index(_index)
+                                .Type(_type)
                                 .Query(q => q
                                      .Match(m => m                                        
                                         .Query(searchText)

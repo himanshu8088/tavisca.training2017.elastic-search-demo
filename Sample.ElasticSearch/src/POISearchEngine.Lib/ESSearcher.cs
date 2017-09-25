@@ -18,7 +18,7 @@ namespace POISearchEngine.Lib
             _index = index;
             _type = type;
         }
-        public ISearchResponse<POI> Search(string searchText)
+        public ISearchResponse<POI> SearchByType(string searchText)
         {            
             var searchResponse = _client.Search<POI>(s => s
                                 .Index(_index)
@@ -32,5 +32,6 @@ namespace POISearchEngine.Lib
                                );
             return searchResponse;
         }
+       
     }
 }

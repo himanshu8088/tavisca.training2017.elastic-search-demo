@@ -26,7 +26,7 @@ namespace POISearchEngine.Lib.Tests
             });
 
             ESSearcher searcher=new ESSearcher(client, index, type);
-            var result=searcher.Search("Sambar");
+            var result=searcher.SearchByType("Sambar");
             Assert.NotNull(result);
         }
     }

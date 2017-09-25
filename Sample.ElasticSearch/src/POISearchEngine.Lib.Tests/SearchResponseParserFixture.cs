@@ -34,7 +34,7 @@ namespace POISearchEngine.Lib.Tests
                 Description = "A Great Place"
             });
             ESSearcher searcher = new ESSearcher(client, index, type);
-            var searchResponse = searcher.Search("Restaurant");
+            var searchResponse = searcher.SearchByType("Restaurant");
             SearchResponseParser parser = new SearchResponseParser();
             var result = parser.Parse(searchResponse);
             Assert.NotNull(result);

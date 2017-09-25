@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Nest;
 
-namespace POISearchEngine.Lib
+namespace ESSearchEngine.Lib
 {
-    public class ESSearcher
+    public class ESSearcher<T> where T:class
     {
         private ElasticClient _client;
         private string _index;
@@ -18,24 +18,24 @@ namespace POISearchEngine.Lib
             _index = index;
             _type = type;
         }
-        public ISearchResponse<POI> SearchByType(string searchText)
-        {
-            var searchResponse = _client.Search<POI>(s => s
-                                .Index(_index)
-                                .Type(_type)
-                                .Query(q => q
-                                     .Match(m => m
-                                        .Query(searchText)
-                                        .Field(f => f.Type)
-                                     )
-                                )
-                               );
-            return searchResponse;
-        }
+        //public ISearchResponse<T> SearchByType(string searchText, T type)
+        //{
+        //    var searchResponse = _client.Search<T>(s => s
+        //                        .Index(_index)
+        //                        .Type(_type)
+        //                        .Query(q => q
+        //                             .Match(m => m
+        //                                .Query(searchText)
+        //                                .Field(f => f.)
+        //                             )
+        //                        )
+        //                       );
+        //    return searchResponse;
+        //}
 
-        public ISearchResponse<POI> Search(string text)
+        public ISearchResponse<T> Search(string text)
         {
-            var searchResponse = _client.Search<POI>(s => s
+            var searchResponse = _client.Search<T>(s => s
                                                            .Index(_index)
                                                            .Type(_type)
                                                            .Query(q => q

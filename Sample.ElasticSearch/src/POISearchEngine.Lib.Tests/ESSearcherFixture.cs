@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using Nest;
 
-namespace POISearchEngine.Lib.Tests
+namespace ESSearchEngine.Lib.Tests
 {
     public class ESSearcherFixture
     {
@@ -19,38 +15,32 @@ namespace POISearchEngine.Lib.Tests
         public void Initialise()
         {            
             _conn = new ESConnection();
-            _index = "poi_ind";
-            _type = "poi";
+            _index = "test";
+            _type = "test_entry";
             _client = _conn.GetClient(new Uri("http://172.16.14.115:9200/"), _index);
             _indexer = new ESIndexer(_client, _index, _type);
-            var response = _indexer.CreateIndex(new POI()
-            {
-                Id="1",
-                Name = "Sambar",
-                Type = "Restaurant",
-                Description = "A Good Place"
-            });
+            var response = _indexer.CreateIndex<object>(new { test_field = "test value" }, "1");
         }
-
-        [Fact]
-        public void SearchByType_Should_Return_Valid_Result()
-        {
-            //Arrange
-            Initialise();
-            ESSearcher searcher=new ESSearcher(_client, _index, _type);
-            //Act            
-            var response=searcher.SearchByType("Sambar");
-            //Assert
-            Assert.NotNull(response);
-        }
-
+        
         [Fact]
         public void Search_Should_Return_Valid_Result()
         {
             Initialise();
-            ESSearcher searcher = new ESSearcher(_client, _index, _type);              
-            ISearchResponse<POI> response = searcher.Search("Restaurant");
+            ESSearcher<object> searcher = new ESSearcher<object>(_client, _index, _type);              
+            ISearchResponse<object> response = searcher.Search("test value");
             Assert.NotNull(response);
         }
+
+        //[Fact]
+        //public void SearchByType_Should_Return_Valid_Result()
+        //{
+        //    //Arrange
+        //    Initialise();
+        //    ESSearcher<Log> searcher=new ESSearcher<Log>(_client, _index, _type);
+        //    //Act            
+        //    var response=searcher.SearchByType("Sambar");
+        //    //Assert
+        //    Assert.NotNull(response);
+        //}
     }
 }

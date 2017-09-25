@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Nest;
 
-namespace POISearchEngine.Lib.Tests
+namespace ESSearchEngine.Lib.Tests
 {
     public class ESConnectionFixture
     {

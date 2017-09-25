@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Nest;
 
-namespace POISearchEngine.Lib
+
+namespace ESSearchEngine.Lib
 {
     public class ESIndexer
     {        
@@ -19,12 +20,12 @@ namespace POISearchEngine.Lib
             _type = type;
         }
 
-        public IIndexResponse CreateIndex(POI poi)
+        public IIndexResponse CreateIndex<T>(object obj, string id)
         {            
-            var response = _client.Index(poi, i => i
+            var response = _client.Index(obj, i => i
                           .Index(_index)
                           .Type(_type)
-                          .Id(poi.Id)
+                          .Id(id)
                           );
             return response;
         }

@@ -68,7 +68,6 @@
     <Compile Include="ESIndexerFixture.cs" />
     <Compile Include="ESSearcherFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchResponseParserFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -77,9 +76,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\POISearchEngine.Lib\POISearchEngine.Lib.csproj">
+    <ProjectReference Include="..\POISearchEngine.Lib\ESSearchEngine.Lib.csproj">
       <Project>{51765550-79bc-4bc1-85d0-9bbefa73ae41}</Project>
-      <Name>POISearchEngine.Lib</Name>
+      <Name>ESSearchEngine.Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

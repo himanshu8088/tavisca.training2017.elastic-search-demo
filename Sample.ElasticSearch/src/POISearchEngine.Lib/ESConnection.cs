@@ -1,7 +1,7 @@
 ﻿using Nest;
 using System;
 
-namespace POISearchEngine.Lib
+namespace ESSearchEngine.Lib
 {
     public class ESConnection
     {

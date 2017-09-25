@@ -20,19 +20,21 @@ namespace POISearchEngine.Lib.Tests
             ESIndexer indexer = new ESIndexer(client, index, type);
             var response = indexer.CreateIndex(new POI()
             {
-                Name = "Sambar",
+                Id="1",
+                Name = "Sambar1",
                 Type = "Restaurant",
                 Description = "A Good Place"
             });
 
             var response2 = indexer.CreateIndex(new POI()
             {
+                Id = "2",
                 Name = "Sambar2",
-                Type = "Restaurant2",
-                Description = "A Good Place"
+                Type = "Restaurant",
+                Description = "A Great Place"
             });
             ESSearcher searcher = new ESSearcher(client, index, type);
-            var searchResponse = searcher.Search("Sambar");
+            var searchResponse = searcher.Search("Restaurant");
             SearchResponseParser parser = new SearchResponseParser();
             var result = parser.Parse(searchResponse);
             Assert.NotNull(result);

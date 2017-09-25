@@ -19,13 +19,14 @@ namespace POISearchEngine.Lib
             _type = type;
         }
         public ISearchResponse<POI> Search(string searchText)
-        {
+        {            
             var searchResponse = _client.Search<POI>(s => s
                                 .Index(_index)
                                 .Type(_type)
                                 .Query(q => q
                                      .Match(m => m                                        
                                         .Query(searchText)
+                                        .Field(f=>f.Type)
                                      )
                                 )
                                );

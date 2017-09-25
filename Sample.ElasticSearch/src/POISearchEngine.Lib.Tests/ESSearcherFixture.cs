@@ -11,7 +11,7 @@ namespace POISearchEngine.Lib.Tests
     public class ESSearcherFixture
     {
         [Fact]
-        public void Search_Should_Return_Valid_Result()
+        public void SearchType_Should_Return_Valid_Result()
         {
             ESConnection conn = new ESConnection();
             string index = "poi_ind";

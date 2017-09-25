@@ -19,18 +19,32 @@ namespace POISearchEngine.Lib
             _type = type;
         }
         public ISearchResponse<POI> SearchByType(string searchText)
-        {            
+        {
             var searchResponse = _client.Search<POI>(s => s
                                 .Index(_index)
                                 .Type(_type)
                                 .Query(q => q
-                                     .Match(m => m                                        
+                                     .Match(m => m
                                         .Query(searchText)
-                                        .Field(f=>f.Type)
+                                        .Field(f => f.Type)
                                      )
                                 )
                                );
             return searchResponse;
-        }               
+        }
+
+        public ISearchResponse<POI> Search(string text)
+        {
+            var searchResponse = _client.Search<POI>(s => s
+                                                           .Index(_index)
+                                                           .Type(_type)
+                                                           .Query(q => q
+                                                                        .QueryString(qStr => qStr
+                                                                                                 .Query(text)
+                                                                                    )
+                                                                 )
+                                                   );
+            return searchResponse;                     
+        }
     }
 }

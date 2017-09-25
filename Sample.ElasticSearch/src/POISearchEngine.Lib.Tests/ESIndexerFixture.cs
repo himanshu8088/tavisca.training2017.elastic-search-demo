@@ -20,6 +20,7 @@ namespace POISearchEngine.Lib.Tests
             ESIndexer indexer = new ESIndexer(client,index,type);
             var response=indexer.CreateIndex(new POI()
                                 {
+                                    Id="1",
                                     Name = "Sambar",
                                     Type = "Restaurant",
                                     Description = "A Good Place"

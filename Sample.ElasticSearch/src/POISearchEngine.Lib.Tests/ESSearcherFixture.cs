@@ -10,24 +10,47 @@ namespace POISearchEngine.Lib.Tests
 {
     public class ESSearcherFixture
     {
-        [Fact]
-        public void SearchByType_Should_Return_Valid_Result()
-        {
-            ESConnection conn = new ESConnection();
-            string index = "poi_ind";
-            string type = "poi";
-            var client = conn.GetClient(new Uri("http://172.16.14.115:9200/"), index);
-            ESIndexer indexer = new ESIndexer(client, index, type);
-            var response = indexer.CreateIndex(new POI()
+        private ESConnection _conn;
+        private string _index;
+        private string _type;
+        private ElasticClient _client;
+        private ESIndexer _indexer;        
+
+        public void Initialise()
+        {            
+            _conn = new ESConnection();
+            _index = "poi_ind";
+            _type = "poi";
+            _client = _conn.GetClient(new Uri("http://172.16.14.115:9200/"), _index);
+            _indexer = new ESIndexer(_client, _index, _type);
+            var response = _indexer.CreateIndex(new POI()
             {
+                Id="1",
                 Name = "Sambar",
                 Type = "Restaurant",
                 Description = "A Good Place"
             });
+        }
 
-            ESSearcher searcher=new ESSearcher(client, index, type);
-            var result=searcher.SearchByType("Sambar");
-            Assert.NotNull(result);
+        [Fact]
+        public void SearchByType_Should_Return_Valid_Result()
+        {
+            //Arrange
+            Initialise();
+            ESSearcher searcher=new ESSearcher(_client, _index, _type);
+            //Act            
+            var response=searcher.SearchByType("Sambar");
+            //Assert
+            Assert.NotNull(response);
+        }
+
+        [Fact]
+        public void Search_Should_Return_Valid_Result()
+        {
+            Initialise();
+            ESSearcher searcher = new ESSearcher(_client, _index, _type);              
+            ISearchResponse<POI> response = searcher.Search("Restaurant");
+            Assert.NotNull(response);
         }
     }
 }

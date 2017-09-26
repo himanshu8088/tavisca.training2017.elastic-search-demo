@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESSearchEngine.Lib", "POISearchEngine.Lib\ESSearchEngine.Lib.csproj", "{51765550-79BC-4BC1-85D0-9BBEFA73AE41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESSearchEngine.Lib", "ESSearchEngine.Lib\ESSearchEngine.Lib.csproj", "{51765550-79BC-4BC1-85D0-9BBEFA73AE41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{99DF95D9-08FD-4ED4-AB61-AC8936BFFC2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESSearchEngine.Lib.Tests", "POISearchEngine.Lib.Tests\ESSearchEngine.Lib.Tests.csproj", "{8B9ACD2B-FE9C-483C-BC39-094A1960BDD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESSearchEngine.Lib.Tests", "ESSearchEngine.Lib.Tests\ESSearchEngine.Lib.Tests.csproj", "{8B9ACD2B-FE9C-483C-BC39-094A1960BDD0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{98D3CD08-3D98-480D-93E9-B246D1B88742}"
 EndProject
